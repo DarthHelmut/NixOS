@@ -8,10 +8,10 @@
   # Set a unique hostname.
   networking.hostName = "my-server";
   
-  # Bootloader configuration.
-  boot.loader.grub.enable = true;
-  boot.loader.grub.version = 2;
-  boot.loader.grub.device = "/dev/sda"; # Adjust based on your boot device.
+#  # Bootloader configuration.
+#  boot.loader.grub.enable = true;
+#  boot.loader.grub.version = 2;
+#  boot.loader.grub.device = "/dev/sda"; # Adjust based on your boot device.
   
   # Load essential kernel modules for Intel virtualization.
   boot.kernelModules = [ "kvm" "kvm_intel" ];
