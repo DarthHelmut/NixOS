@@ -1,9 +1,9 @@
 { config, pkgs, ... }:
 
 {
-  ######################
-  # Basic Server Setup #
-  ######################
+  #################################
+  # Basic Server & Virtualisation #
+  #################################
   
   # Set a unique hostname.
   networking.hostName = "my-server";
@@ -13,85 +13,98 @@
   boot.loader.grub.version = 2;
   boot.loader.grub.device = "/dev/sda"; # Adjust based on your boot device.
   
-  # Virtualization support.
+  # Load essential kernel modules for Intel virtualization.
   boot.kernelModules = [ "kvm" "kvm_intel" ];
+  
+  # Virtualisation support.
   services.virtualisation.libvirtd.enable = true;
   virtualisation.qemu.package = pkgs.qemu;
   
-  # SSH server for secure remote access.
+  # Enable the OpenSSH server for remote access.
   services.openssh.enable = true;
-  # For tighter security, consider disabling password authentication:
+  # Optionally, disable password authentication for extra security:
   # services.openssh.passwordAuthentication = false;
-
-  # Enable the firewall and allow SSH (port 22).
-  networking.firewall.enable = true;
-  networking.firewall.allowedTCPPorts = [ 22 ];
-  networking.firewall.forwarding = true;  # Allow forwarding for NAT.
   
-  # Enable NTP for accurate time synchronization.
+  # Firewall configuration: allow SSH (port 22) and Netdata (port 19999).
+  networking.firewall.enable = true;
+  networking.firewall.allowedTCPPorts = [ 22 19999 ];
+  networking.firewall.forwarding = true;  # Required for NAT.
+  
+  # Enable time synchronization.
   services.ntp.enable = true;
   
-  # Security: Fail2ban to protect against brute force attacks.
+  # Enable Fail2ban to help prevent brute-force attacks.
   security.fail2ban.enable = true;
   
   # Enable cron for scheduled tasks.
   services.cron.enable = true;
   
-  # Basic administrative tools.
+  # Basic administrative packages.
   environment.systemPackages = with pkgs; [
-    htop      # Process viewer.
-    vim       # Text editor.
-    git       # Version control.
-    wget      # File download utility.
-    curl      # Command line tool for transferring data.
-    net-tools # Basic network utilities.
+    htop        # Process viewer.
+    vim         # Text editor.
+    git         # Version control.
+    wget        # File download utility.
+    curl        # Data transfer tool.
+    net-tools   # For basic network utilities.
   ];
   
   # Enable sudo for administrative privileges.
   security.sudo.enable = true;
   
-  # Create a default user; adjust username and shell as desired.
+  # Create a default user. Adjust 'myuser' and shell as desired.
   users.users.myuser = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "libvirt" ];  # 'wheel' for sudo, 'libvirt' for VM management.
+    extraGroups = [ "wheel" "libvirt" ];
     shell = pkgs.zsh;
   };
   
-  # Automatic system updates.
+  # Enable automatic system upgrades.
   system.autoUpgrade.enable = true;
   system.autoUpgrade.allowReboot = true;
 
   #########################################
-  # Wi‑Fi Sharing: NAT & DHCP on Ethernet #
+  # Wi‑Fi Sharing: NAT, Ethernet & DHCP    #
   #########################################
   
-  # Enable IP forwarding. This is needed for NAT and is typically enabled
-  # when networking.nat.enable is true, but we state it explicitly.
+  # Enable IP forwarding for NAT.
   networking.ipForward = true;
   
-  # Enable NAT so that devices on the Ethernet network can reach the upstream Internet.
-  # Here we assume that your upstream connection (Wi‑Fi) is already working.
+  # Enable NAT. This lets devices on the Ethernet segment share the upstream Internet.
   networking.nat.enable = true;
   networking.nat.internalInterfaces = [ "enp1s0" ];  # Replace with your Ethernet interface.
   
   # Configure the Ethernet interface with a static IP.
   networking.interfaces.enp1s0 = {
     useDHCP = false;
-    ipAddress = "192.168.42.1";  # Gateway for devices connecting via Ethernet.
+    ipAddress = "192.168.42.1";  # This will be the gateway for devices.
     prefixLength = 24;
   };
   
-  # Set up a DHCP and DNS server (via dnsmasq) on the Ethernet interface so that devices
-  # (like your Raspberry Pi 4) receive an IP address automatically.
+  # Set up a DHCP/DNS server (using dnsmasq) on the Ethernet interface.
   services.dnsmasq = {
     enable = true;
-    interfaces = [ "enp1s0" ];  # Bind dnsmasq to the Ethernet interface.
+    interfaces = [ "enp1s0" ];  # Bind to the Ethernet port used for sharing.
     extraConfig = ''
       dhcp-range=192.168.42.2,192.168.42.254,24h
     '';
   };
 
-  #######################
-  # End of Server Config
-  #######################
+  #########################################
+  # Monitoring: Netdata (Dashboard Website)#
+  #########################################
+  
+  # Enable Netdata for real-time system monitoring.
+  services.netdata = {
+    enable = true;
+    # Optional: You can customize settings as needed.
+    settings = {
+      # Bind to all interfaces to allow remote access from your LAN.
+      bindAddress = "0.0.0.0";
+      port = 19999;  # Default port for Netdata's dashboard.
+    };
+  };
+
+  # With this setup, you can view your server's CPU, memory, disk, and network usage by
+  # browsing to http://<server-ip>:19999.
 }
