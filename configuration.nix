@@ -5,7 +5,8 @@
   imports = [
     ./hardware-configuration.nix
     ./hyprland.nix
-    ./nvidiagpu
+    ./nvidiagpu.nix
+    ./HeadlessServer.nix
   ];
 
 
