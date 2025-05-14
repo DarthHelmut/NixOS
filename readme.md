@@ -16,3 +16,21 @@ Whether you're setting up a personal desktop or configuring servers, these files
 
 A typical directory layout in this repository might look like:
 
+
+## Getting Started
+
+### Prerequisites
+
+- **NixOS:** A system running NixOS (the stable channel is recommended).
+- **Familiarity with Nix:** Basic knowledge of the Nix language and declarative configuration.
+
+### Installation
+
+1. **Clone the Repository:**
+
+   ```bash
+   git clone https://github.com/DarthHelmut/NixOS.git
+   cd NixOS
+
+
+sudo nixos-rebuild switch -I nixos-config=./configuration.nix
