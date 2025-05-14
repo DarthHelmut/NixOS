@@ -5,9 +5,8 @@
   imports = [
     ./hardware-configuration.nix
     ./hyprland.nix
-    ./nvidiagpu.nix
-    ./HeadlessServer.nix
-    
+#    ./nvidiagpu.nix
+#    ./HeadlessServer.nix
   ];
 
 
@@ -82,17 +81,28 @@ nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # List packages installed in the system profile.
   environment.systemPackages = with pkgs; [
-    vim          # Text editor.
+    neovim          # Text editor.
     wget         # File downloader.
     git          # Version control.
-    fastfetch    # System info fetch tool.
+    nitch    # System info fetch tool.
     kitty        # Terminal emulator.
     waybar       # Status bar.
-    wofi         # Application launcher.
+    rofi         # Application launcher.
     firefox      # Web browser.
     hyprpaper    # Wallpaper setter for Hyprland.
+    btop	 # Resource Monitor
+    emacs	 # Text editor
     mako         # Notification daemon.
-  ];
+    bat		 # Cat replacement
+    eza		 # ls replacement
+    hyprlock	 # Screen lock
+    fzf		 # File finder
+
+
+
+
+
+];
 
   ##########################
   # Additional Services    #
