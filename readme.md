@@ -34,3 +34,5 @@ A typical directory layout in this repository might look like:
 
 
 sudo nixos-rebuild switch -I nixos-config=./configuration.nix
+In the .configuration.nix Uncomment the nvidiagpu.nix if you have a Nvidia gpu, "WAYLAND MAY OR NOT WORK"
+If you dont want hyprland you can comment it out and make your own .nix for your DE/WM
