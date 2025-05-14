@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Homepage</title>
+  <!-- Import a modern, clean font from Google Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Montserrat', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #800080, #ff4d4d);
+      background-size: 200% 200%;
+      animation: gradientAnimation 10s ease infinite;
+    }
+    
+    @keyframes gradientAnimation {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    
+    /* Unified Card Container */
+    .card {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 30px 20px 40px;
+      box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+      text-align: center;
+      max-width: 360px;
+      margin: 20px;
+    }
+    
+    /* Header with the Tied Owl Image */
+    .header {
+      margin-bottom: 20px;
+    }
+    
+    .owl-image {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 3px solid rgba(255, 255, 255, 0.8);
+      object-fit: cover;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+    
+    /* Google Search Bar Styles */
+    .google-search {
+      display: flex;
+      margin: 0 auto 20px;
+      max-width: 280px;
+      width: 100%;
+    }
+    
+    .google-search input[type="text"] {
+      flex: 1;
+      padding: 8px;
+      border: none;
+      border-top-left-radius: 30px;
+      border-bottom-left-radius: 30px;
+      font-size: 14px;
+      outline: none;
+    }
+    
+    .google-search button {
+      padding: 8px 15px;
+      border: none;
+      background-color: #ff4d4d;
+      color: white;
+      border-top-right-radius: 30px;
+      border-bottom-right-radius: 30px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: transform 0.2s, background-color 0.2s;
+    }
+    
+    .google-search button:hover {
+      transform: scale(1.05);
+      background-color: #ff3333;
+    }
+    
+    /* Link Bubble Styles */
+    .link-bubble {
+      display: block;
+      margin: 15px auto;
+      padding: 15px 25px;
+      font-size: 18px;
+      font-weight: 600;
+      text-decoration: none;
+      color: #ffffff;
+      border: 2px solid rgba(255, 255, 255, 0.8);
+      border-radius: 30px;
+      transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+      max-width: 300px;
+    }
+    
+    .link-bubble:hover {
+      transform: scale(1.1);
+      background-color: rgba(255, 255, 255, 0.3);
+      color: #000000;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <!-- Header including the Tied Owl Image -->
+    <div class="header">
+      <img
+        class="owl-image"
+        src="https://img.freepik.com/premium-photo/cartoon-image-owl-wearing-suit-tie_899894-67095.jpg"
+        alt="Cartoon Owl Wearing Suit & Tie"
+      />
+    </div>
+    
+    <!-- Google Search Bar -->
+    <form action="https://www.google.com/search" method="GET" target="_blank" class="google-search">
+      <input type="text" name="q" placeholder="Search Google..." />
+      <button type="submit">Search</button>
+    </form>
+    
+    <!-- Link Bubbles -->
+    <a class="link-bubble" href="https://github.com/DarthHelmut/NixOS" target="_blank">
+      GitHub - DarthHelmut/NixOS
+    </a>
+    <a class="link-bubble" href="https://nixos.org/manual/nixos/stable/" target="_blank">
+      NixOS Manual
+    </a>
+    <a class="link-bubble" href="https://search.nixos.org/packages" target="_blank">
+      NixOS Package Search
+    </a>
+  </div>
+</body>
+</html>
+
