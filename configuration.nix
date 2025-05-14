@@ -7,7 +7,7 @@
     ./hyprland.nix
     ./nvidiagpu.nix
     ./HeadlessServer.nix
-    ./kde.nix
+    
   ];
 
 
