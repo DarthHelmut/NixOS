@@ -33,9 +33,8 @@ A typical directory layout in this repository might look like:
    cd NixOS
 
 
-sudo nixos-rebuild switch -I nixos-config=./configuration.nix
-In the .configuration.nix Uncomment the nvidiagpu.nix if you have a Nvidia gpu, "WAYLAND MAY OR NOT WORK"
-If you dont want hyprland you can comment it out and make your own .nix for your DE/WM
+
+
 #+CAPTION: Desktop Scrot
 #+ATTR_HTML: :alt Desktop Scrot :title Desktop Scrot :align left
 [[https://github.com/DarthHelmut/NixOS/blob/main/Pics/2025-05-14-232929_hyprshot.png]]
