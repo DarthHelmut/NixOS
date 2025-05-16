@@ -1,40 +1,47 @@
-# NixOS Configuration
+#+TITLE: NixOS Configuration
+#+AUTHOR: DarthHelmut
+#+DATE: 2025-05-15
+#+DESCRIPTION: Modular and reproducible NixOS configurations
+#+OPTIONS: toc:t
 
-Welcome to the **NixOS Configuration** repository by DarthHelmut. This repository houses my personal, modular, and reproducible NixOS configuration files. It is designed to help you set up and customize your NixOS system using declarative configurations, ensuring consistency and ease of maintenance on your systems.
+* Welcome to the **NixOS Configuration** Repository
+This repository houses my personal, modular, and reproducible NixOS configuration files. It is designed to help you set up and customize your NixOS system using declarative configurations, ensuring consistency and ease of maintenance.
 
-## Overview
-
+* Overview
 This repository is built around several key principles:
 
-- **Modularity:** Each component of the configuration is broken into manageable, logically separated modules.
-- **Reproducibility:** Leverage the power of NixOS to recreate your system exactly as defined.
-- **Monitoring & Optimization:** Integrated support for various monitoring tools (e.g., Prometheus, Grafana, Netdata) alongside system optimization tweaks.
+- **Modularity** :: Each component of the configuration is broken into manageable, logically separated modules.
+- **Reproducibility** :: Leverage the power of NixOS to recreate your system exactly as defined.
+- **Monitoring & Optimization** :: Integrated support for various monitoring tools (e.g., Prometheus, Grafana, Netdata) alongside system optimization tweaks.
 
 Whether you're setting up a personal desktop or configuring servers, these files provide a robust starting point.
 
-## Repository Structure
-
+* Repository Structure
 A typical directory layout in this repository might look like:
 
+#+BEGIN_SRC
+NixOS/
+├── modules/
+├── configs/
+├── scripts/
+└── docs/
+#+END_SRC
 
-## Getting Started
+* Getting Started
 
-### Prerequisites
+** Prerequisites
+- **NixOS** :: A system running NixOS (the stable channel is recommended).
+- **Familiarity with Nix** :: Basic knowledge of the Nix language and declarative configuration.
 
-- **NixOS:** A system running NixOS (the stable channel is recommended).
-- **Familiarity with Nix:** Basic knowledge of the Nix language and declarative configuration.
+** Installation
 
-### Installation
-
-1. **Clone the Repository:**
-
-   ```bash
+1. Clone the Repository:
+   #+BEGIN_SRC bash
    git clone https://github.com/DarthHelmut/NixOS.git
    cd NixOS
+   #+END_SRC
 
-
-
-
+* Screenshots
 #+CAPTION: Desktop Scrot
 #+ATTR_HTML: :alt Desktop Scrot :title Desktop Scrot :align left
 [[https://github.com/DarthHelmut/NixOS/blob/main/Pics/2025-05-14-232929_hyprshot.png]]
