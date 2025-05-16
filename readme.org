@@ -44,4 +44,5 @@ NixOS/
 * Screenshots
 #+CAPTION: Desktop Scrot
 #+ATTR_HTML: :alt Desktop Scrot :title Desktop Scrot :align left
+[[https://github.com/DarthHelmut/NixOS/blob/main/Pics/2025-05-14-232929_hyprshot.png]]
 [[https://github.com/DarthHelmut/NixOS/blob/main/Pics/2025-05-14-233943_hyprshot.png]]
