@@ -4,7 +4,7 @@
 #+DESCRIPTION: Modular and reproducible NixOS configurations
 #+OPTIONS: toc:t
 
-* Welcome to the **DarthHelmut NixOS** Repository
+* Welcome to the DarthHelmut NixOS Repository
 This repository houses my personal, modular, and reproducible NixOS configuration files. It is designed to help you set up and customize your NixOS system using declarative configurations, ensuring consistency and ease of maintenance.
 
 * Overview
@@ -16,21 +16,10 @@ This repository is built around several key principles:
 
 Whether you're setting up a personal desktop or configuring servers, these files provide a robust starting point.
 
-* Repository Structure
-A typical directory layout in this repository might look like:
-
-#+BEGIN_SRC
-NixOS/
-├── modules/
-├── configs/
-├── scripts/
-└── docs/
-#+END_SRC
-
 * Getting Started
 
 ** Prerequisites
-- **NixOS** :: A system running NixOS (the stable channel is recommended).
+- **NixOS** :: A system running NixOS (the unstable channel is recommended).
 - **Familiarity with Nix** :: Basic knowledge of the Nix language and declarative configuration.
 
 ** Installation
